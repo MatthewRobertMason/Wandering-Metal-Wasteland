@@ -19,5 +19,7 @@ public class AutomatedBuild : MonoBehaviour
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
         options.locationPathName = ".\\Build\\WebGL";
+
+        BuildPipeline.BuildPlayer(options);
     }
 }
