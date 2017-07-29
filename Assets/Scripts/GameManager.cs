@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
-
+[RequireComponent(typeof(AudioSource))]
+public class GameManager : MonoBehaviour 
+{
+    private static GameManager instance = null;
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(this);
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		
 	}
 }
