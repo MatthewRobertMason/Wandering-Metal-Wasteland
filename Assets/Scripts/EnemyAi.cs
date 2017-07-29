@@ -72,9 +72,7 @@ public class EnemyAi : MonoBehaviour
         switch (EnemyAIType)
         {
             case AIType.CHASER:
-                //this.transform.Rotate(Vector3.forward, Vector2.Angle(forward, target.transform.position - this.transform.position));
-                //this.transform.Rotate(Vector3.forward, Vector2.Angle(Vector2.up, forward));
-                //forward = target.transform.position - this.transform.position;
+                this.transform.up = forward;
 
                 rBody.velocity = forward.normalized * moveSpeed;
                 break;
