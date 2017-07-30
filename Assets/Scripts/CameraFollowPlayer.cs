@@ -18,6 +18,11 @@ public class CameraFollowPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        if (player == null)
+        {
+            this.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
+        }
+
         if ((player == null) && (gameManager.player != null))
         {
             player = gameManager.player;

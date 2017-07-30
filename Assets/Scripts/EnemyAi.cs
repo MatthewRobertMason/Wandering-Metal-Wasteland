@@ -76,6 +76,7 @@ public class EnemyAi : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        rBody.velocity = (-1 * rBody.velocity.normalized) * 5;
     }
 
     void Move()

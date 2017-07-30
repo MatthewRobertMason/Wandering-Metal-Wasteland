@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
         {
             HP -= collisionDamage;
 
-            if (HP <= 0.0f)
+            if ((HP <= 0.0f) && (!dead))
             {
                 // Explode
                 dead = true;
