@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1765248920128150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -3.4713821, y: 7.926838, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4418572806650692}
@@ -137,8 +137,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.35}
-  m_Size: {x: 1.4, y: 0.65}
+  m_Offset: {x: 0, y: -0.25}
+  m_Size: {x: 1.4, y: 1}
   m_Direction: 1
 --- !u!95 &95817539752314438
 Animator:
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyAIType: 0
   faction: 1
-  target: {fileID: 1099210920182524, guid: 80ae942fe54257947a7b6b1017f5c81b, type: 2}
+  target: {fileID: 0}
   moveSpeed: 0.25
   HP: 3
   maxHP: 3

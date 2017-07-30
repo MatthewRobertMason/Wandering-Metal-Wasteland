@@ -485,7 +485,7 @@ MonoBehaviour:
   maxHP: 10
   PP: 10
   maxPP: 10
-  powerUsagePerSecond: 0.5
+  powerUsagePerSecond: 0.1
   stillAnimation: {fileID: 1198135929593324}
   walkAnimation: {fileID: 1053811963436822}
   shootAnimation: {fileID: 1295768838376626}
@@ -494,7 +494,7 @@ MonoBehaviour:
   chainsawCollider: {fileID: 1059090628162716, guid: 9ee1a20a846382d46899785ca2c85c96,
     type: 2}
   chainsawDuration: 0.75
-  gunPowerUsage: 2
+  gunPowerUsage: 0.5
 --- !u!114 &114970601617157596
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     }
     private AnimationState animationState = AnimationState.STILL;
 
+    private GameManager gameManager = null;
+
     public Faction faction = Faction.Player;
     public Transform bulletSpawn = null;
     public float turnSpeed = 5.0f;
@@ -56,6 +58,12 @@ public class Player : MonoBehaviour
     private bool dead = false;
 
     public float gunPowerUsage = 2.0f;
+
+    void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        gameManager.player = this.gameObject;
+    }
 
 	// Use this for initialization
 	void Start () 

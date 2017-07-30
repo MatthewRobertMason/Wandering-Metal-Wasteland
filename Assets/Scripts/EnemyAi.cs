@@ -13,6 +13,8 @@ public class EnemyAi : MonoBehaviour
     }
     public AIType EnemyAIType;
 
+    private GameManager gameManager = null;
+
     public Faction faction = Faction.Enemy;
 
     public GameObject target;
@@ -25,9 +27,16 @@ public class EnemyAi : MonoBehaviour
 
     private Vector2 forward;
 
+    void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
 	// Use this for initialization
 	void Start () 
     {
+        target = gameManager.player;
+
         rBody = this.GetComponent<Rigidbody2D>();
         forward = Vector2.up;
 	}
