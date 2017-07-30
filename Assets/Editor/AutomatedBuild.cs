@@ -13,6 +13,7 @@ public class AutomatedBuild : MonoBehaviour
             "Assets/MainMenu.unity",
             "Assets/Level1.unity" 
         };
+
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
         options.locationPathName = ".\\Build\\WebGL";

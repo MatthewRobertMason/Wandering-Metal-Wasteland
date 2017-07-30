@@ -96,7 +96,8 @@ public class GameManager : MonoBehaviour
                 mainMenuCanvas.gameObject.SetActive(true);
                 mainMenuSoundSource.SetActive(true);
                 mainMenuAudioListener.SetActive(true);
-                LoadScene("MainMenu");
+                //LoadScene("MainMenu");
+                LoadScene(0);
                 gameCamera.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
                 ChangeTrack(0);
             }
@@ -156,7 +157,8 @@ public class GameManager : MonoBehaviour
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(menuButtonClickSound);
         //load level
-        LoadScene("Level1");
+        //LoadScene("Level1");
+        LoadScene(1);
         mainMenuCanvas.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
         mainMenuSoundSource.SetActive(false);
