@@ -10,13 +10,13 @@ public class AutomatedBuild : MonoBehaviour
     {
         BuildPlayerOptions options;
         options.scenes = new string[] { 
-            "Assets/MainMenu.unity",
-            "Assets/Level1.unity" 
+            "MainMenu.unity",
+            "Level1.unity" 
         };
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
-        options.locationPathName = ".\\Build\\WebGL";
+        options.locationPathName = "Build/WebGL";
 
         BuildPipeline.BuildPlayer(options);
     }
