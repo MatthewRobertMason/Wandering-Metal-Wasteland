@@ -19,6 +19,7 @@ public class EnemyAi : MonoBehaviour
     public float moveSpeed;
     public float HP;
     public float maxHP;
+    public float detectionDistance = 10.0f;
 
     private Rigidbody2D rBody = null;
 
@@ -34,7 +35,10 @@ public class EnemyAi : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        Move();
+        if (Vector3.Distance(this.transform.position, target.transform.position) < detectionDistance)
+        {
+            Move();
+        }
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -67,15 +71,18 @@ public class EnemyAi : MonoBehaviour
 
     void Move()
     {
-        forward = target.transform.position - this.transform.position;
-
-        switch (EnemyAIType)
+        if (target != null)
         {
-            case AIType.CHASER:
-                this.transform.up = forward;
+            forward = target.transform.position - this.transform.position;
 
-                rBody.velocity = forward.normalized * moveSpeed;
-                break;
+            switch (EnemyAIType)
+            {
+                case AIType.CHASER:
+                    this.transform.up = forward;
+
+                    rBody.velocity = forward.normalized * moveSpeed;
+                    break;
+            }
         }
     }
 }

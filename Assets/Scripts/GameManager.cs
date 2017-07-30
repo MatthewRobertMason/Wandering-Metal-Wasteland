@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public enum Faction
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
     private AudioSource aSource = null;
     public AudioClip[] audioClips = null;
     private int currentAudioIndex = 0;
+
+    public GameObject renderingCamera = null;
+    public Text scoreText = null;
+    public Image healthFill = null;
+    public Image powerFill = null;
 
 	// Use this for initialization
 	void Start () 
@@ -52,6 +58,8 @@ public class GameManager : MonoBehaviour
                 aSource.Play();
             }
         }
+
+        updatePowerAndHealthBars();
 	}
 
     void NextTrack()
@@ -83,5 +91,13 @@ public class GameManager : MonoBehaviour
             aSource.clip = audioClips[currentAudioIndex];
             aSource.Play();
         }
+    }
+
+    void updatePowerAndHealthBars()
+    {
+        Player play = player.GetComponent<Player>();
+
+        healthFill.transform.localScale = new Vector3(play.HP / play.maxHP, 1.0f, 1.0f);
+        powerFill.transform.localScale = new Vector3(play.PP / play.maxPP, 1.0f, 1.0f);
     }
 }
