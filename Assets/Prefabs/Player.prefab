@@ -472,18 +472,18 @@ MonoBehaviour:
   faction: 0
   bulletSpawn: {fileID: 4511985881274058}
   turnSpeed: 1.5
-  moveSpeed: 2
+  moveSpeed: 5
   prefabBullet: {fileID: 1866341932817430, guid: fc7bf06fba5a70f4b835fcd93c7c44f4,
     type: 2}
   maxBullets: 5
-  bulletSpeed: 5
+  bulletSpeed: 3
   bulletSound: {fileID: 8300000, guid: 73dbb3252e5f5ff4981f8077d9a2add0, type: 3}
   meleeSound: {fileID: 8300000, guid: 3c6e35d19b39f9a4d8e358ceed624619, type: 3}
   playerDead: {fileID: 8300000, guid: 1485793f2f2df134a80b711cc959b469, type: 3}
   playerPowerDown: {fileID: 8300000, guid: 3389e5adc3aaed84db8e9a63cca0805f, type: 3}
-  HP: 1
+  HP: 10
   maxHP: 10
-  PP: 10
+  PP: 1000
   maxPP: 10
   powerUsagePerSecond: 0.1
   stillAnimation: {fileID: 1198135929593324}
@@ -495,6 +495,7 @@ MonoBehaviour:
     type: 2}
   chainsawDuration: 0.75
   gunPowerUsage: 0.5
+  damageBonus: 0
 --- !u!114 &114970601617157596
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -538,7 +539,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: fbd5de0d3a655a04692473081220e098, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -580,7 +581,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300004, guid: a77359f00d7d7484abe1a24f8b3c7c29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -622,7 +623,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 3df7b8c640278e94386266c84d0053f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -706,7 +707,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: b4f2dea983d33e24a892e29fc0eaa105, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

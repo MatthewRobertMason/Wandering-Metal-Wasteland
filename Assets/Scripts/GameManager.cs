@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject renderingCamera = null;
     public Text scoreText = null;
+    public Text zombiesText = null;
     public Image healthFill = null;
     public Image powerFill = null;
 
@@ -39,11 +40,18 @@ public class GameManager : MonoBehaviour
     public Canvas menuCanvas = null;
 
     private float deadTimer = 3.0f;
-
+    
     public GameObject mainMenuSoundSource = null;
     public GameObject mainMenuAudioListener = null;
 
     public static int gameScore = 0;
+
+    public GameObject blackScreen = null;
+
+    private string nextLevel = null;
+    private float nextLevelTimer = 0.0f;
+    public float nextLevelTimerMax = 3.0f;
+    private bool changingLevel = false;
 
     void Awake()
     {
@@ -67,7 +75,6 @@ public class GameManager : MonoBehaviour
             {
                 mainMenuCanvas.gameObject.SetActive(false);
                 gameCanvas.gameObject.SetActive(true);
-                mainMenuSoundSource.SetActive(false);
                 mainMenuAudioListener.SetActive(false);
                 ChangeTrack(1);
             }
@@ -90,8 +97,37 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        string tempScore = String.Format("{0,8:00000000}", gameScore); // "00000000";
+        if ((blackScreen.activeInHierarchy == true) && (nextLevel == null))
+        {
+            nextLevelTimer = 0.0f;
+            changingLevel = false;
+            blackScreen.SetActive(false);
+        }
+
+        if ((changingLevel) && (nextLevel != null))
+        {
+            if (nextLevelTimer == nextLevelTimerMax)
+            {
+                nextLevelTimer -= Time.deltaTime;
+                blackScreen.SetActive(true);
+            }
+            else if ((nextLevelTimer > 0.0f) && (nextLevelTimer <= nextLevelTimerMax))
+            {
+                nextLevelTimer -= Time.deltaTime;
+            }
+            else
+            {
+                player.transform.position = Vector3.zero;
+                LoadScene(nextLevel);
+                nextLevel = null;
+            }
+        }
+
+        string tempScore = String.Format("{0,8:00000000}", gameScore);
         scoreText.text = "Score: " + tempScore;
+
+        string tempZombieCount = String.Format("{0,3:000}", CountZombies());
+        zombiesText.text = "Zombies: " + tempZombieCount;
 
         if (aSource.isPlaying == false)
         {
@@ -126,7 +162,6 @@ public class GameManager : MonoBehaviour
                 deadTimer = 3.0f;
                 gameCanvas.gameObject.SetActive(false);
                 mainMenuCanvas.gameObject.SetActive(true);
-                mainMenuSoundSource.SetActive(true);
                 mainMenuAudioListener.SetActive(true);
                 gameCamera.GetComponent<CameraFollowPlayer>().player = null;
                 ChangeTrack(0);
@@ -177,14 +212,36 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel(string levelName)
     {
-        LoadScene(levelName);
-        player.transform.position = Vector3.zero;
+        if (CountZombies() == 0)
+        {
+            //LoadScene(levelName);
+            //player.transform.position = Vector3.zero;
+            nextLevel = levelName;
+            changingLevel = true;
+            nextLevelTimer = nextLevelTimerMax;
+            soundSource.GetComponent<AudioSource>().PlayOneShot(zoneSlayerAudio);
+        }
+        else
+        {
+            aSource.PlayOneShot(passwordSound);
+        }
     }
 
     public void NextLevel(int levelId)
     {
-        LoadScene(levelId);
-        player.transform.position = Vector3.zero;
+        if (CountZombies() == 0)
+        {
+            //LoadScene(levelId);
+            //player.transform.position = Vector3.zero;
+            nextLevel = SceneManager.GetSceneAt(levelId).name;
+            changingLevel = true;
+            nextLevelTimer = nextLevelTimerMax;
+            soundSource.GetComponent<AudioSource>().PlayOneShot(zoneSlayerAudio);
+        }
+        else
+        {
+            aSource.PlayOneShot(passwordSound);
+        }
     }
 
     private void LoadScene(string levelName)
@@ -200,12 +257,11 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(menuButtonClickSound);
-        //load level
+
         LoadScene("Level1");
         //LoadScene(1);
         mainMenuCanvas.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
-        mainMenuSoundSource.SetActive(false);
         mainMenuAudioListener.SetActive(false);
         ChangeTrack(1);
     }
@@ -246,5 +302,14 @@ public class GameManager : MonoBehaviour
     public void playTitle()
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(zoneSlayerAudio);
+    }
+
+    public int CountZombies()
+    {
+        EnemyAi[] enemies = FindObjectsOfType<EnemyAi>();
+        if (enemies != null)
+            return enemies.Length;
+
+        return 0;
     }
 }

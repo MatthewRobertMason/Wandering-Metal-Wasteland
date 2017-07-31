@@ -19,8 +19,9 @@ public class OnTriggerLevelChange : MonoBehaviour
 
         if ((sceneName != null) && (player != null))
         {
-            gameManager.playTitle();
+            //gameManager.playTitle();
             gameManager.NextLevel(sceneName);
+            Destroy(this.gameObject);
         }
     }
 }

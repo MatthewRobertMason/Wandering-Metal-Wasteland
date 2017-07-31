@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
 
     public float gunPowerUsage = 2.0f;
 
+    public float damageBonus = 0.0f;
+
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();

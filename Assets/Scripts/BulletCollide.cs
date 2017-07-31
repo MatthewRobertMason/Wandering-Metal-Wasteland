@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletCollide : MonoBehaviour 
 {
     public GameObject explosion = null;
-    //private GameObject _explosion = null;
 
     void OnDestroy()
     {
