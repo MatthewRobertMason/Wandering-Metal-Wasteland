@@ -472,7 +472,7 @@ MonoBehaviour:
   faction: 0
   bulletSpawn: {fileID: 4511985881274058}
   turnSpeed: 1.5
-  moveSpeed: 5
+  moveSpeed: 1.5
   prefabBullet: {fileID: 1866341932817430, guid: fc7bf06fba5a70f4b835fcd93c7c44f4,
     type: 2}
   maxBullets: 5
@@ -483,7 +483,7 @@ MonoBehaviour:
   playerPowerDown: {fileID: 8300000, guid: 3389e5adc3aaed84db8e9a63cca0805f, type: 3}
   HP: 10
   maxHP: 10
-  PP: 1000
+  PP: 10
   maxPP: 10
   powerUsagePerSecond: 0.1
   stillAnimation: {fileID: 1198135929593324}
@@ -494,7 +494,7 @@ MonoBehaviour:
   chainsawCollider: {fileID: 1059090628162716, guid: 9ee1a20a846382d46899785ca2c85c96,
     type: 2}
   chainsawDuration: 0.75
-  gunPowerUsage: 0.5
+  gunPowerUsage: 0.75
   damageBonus: 0
 --- !u!114 &114970601617157596
 MonoBehaviour:
