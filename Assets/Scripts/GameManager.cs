@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     public Image healthFill = null;
     public Image powerFill = null;
 
+    public Canvas credits = null;
+
     public GameObject soundSource = null;
     public AudioClip passwordSound = null;
     public AudioClip menuButtonClickSound = null;
@@ -76,7 +78,6 @@ public class GameManager : MonoBehaviour
                 currentAudioIndex = 0;
                 aSource.Play();
             }
-
 
             // For debuging
             if (SceneManager.GetActiveScene().name != "MainMenu")
@@ -138,7 +139,7 @@ public class GameManager : MonoBehaviour
         zombiesText.text = "Zombies: " + tempZombieCount;
 
         string tempHighScore = String.Format("{0,8:00000000}", highScore);
-        highScoreText.text = "High Score: " + tempHighScore;
+        highScoreText.text = "Top Score: " + tempHighScore;
 
         if (aSource.isPlaying == false)
         {
@@ -233,8 +234,6 @@ public class GameManager : MonoBehaviour
     {
         if (CountZombies() == 0)
         {
-            //LoadScene(levelName);
-            //player.transform.position = Vector3.zero;
             nextLevel = levelName;
             changingLevel = true;
             nextLevelTimer = nextLevelTimerMax;
@@ -250,8 +249,6 @@ public class GameManager : MonoBehaviour
     {
         if (CountZombies() == 0)
         {
-            //LoadScene(levelId);
-            //player.transform.position = Vector3.zero;
             nextLevel = SceneManager.GetSceneAt(levelId).name;
             changingLevel = true;
             nextLevelTimer = nextLevelTimerMax;
@@ -280,6 +277,7 @@ public class GameManager : MonoBehaviour
         LoadScene("Level1");
         //LoadScene(1);
         mainMenuCanvas.gameObject.SetActive(false);
+        credits.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
         mainMenuAudioListener.SetActive(false);
         ChangeTrack(1);
@@ -293,6 +291,7 @@ public class GameManager : MonoBehaviour
     public void Credits()
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(menuButtonClickSound);
+        credits.gameObject.SetActive(!credits.gameObject.activeInHierarchy);
     }
 
     private bool playerDead()
