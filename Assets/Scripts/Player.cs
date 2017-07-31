@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         gameManager.player = this.gameObject;
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
 	// Use this for initialization

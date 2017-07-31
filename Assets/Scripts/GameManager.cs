@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,13 +42,15 @@ public class GameManager : MonoBehaviour
     public GameObject mainMenuSoundSource = null;
     public GameObject mainMenuAudioListener = null;
 
+    public static int gameScore = 0;
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
-
+            
             aSource = this.GetComponent<AudioSource>();
 
             if (audioClips.Length > 0)
@@ -81,6 +84,9 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        string tempScore = String.Format("{0,8:00000000}", gameScore); // "00000000";
+        scoreText.text = "Score: " + tempScore;
+
         if (aSource.isPlaying == false)
         {
             if (audioClips.Length > 0)
@@ -116,10 +122,10 @@ public class GameManager : MonoBehaviour
                 mainMenuCanvas.gameObject.SetActive(true);
                 mainMenuSoundSource.SetActive(true);
                 mainMenuAudioListener.SetActive(true);
-                //LoadScene("MainMenu");
                 gameCamera.GetComponent<CameraFollowPlayer>().player = null;
                 ChangeTrack(0);
-                LoadScene(0);
+                //LoadScene(0);
+                LoadScene("MainMenu");
             }
         }
 	}
@@ -163,6 +169,18 @@ public class GameManager : MonoBehaviour
         powerFill.transform.localScale = new Vector3(play.PP / play.maxPP, 1.0f, 1.0f);
     }
 
+    public void NextLevel(string levelName)
+    {
+        LoadScene(levelName);
+        player.transform.position = Vector3.zero;
+    }
+
+    public void NextLevel(int levelId)
+    {
+        LoadScene(levelId);
+        player.transform.position = Vector3.zero;
+    }
+
     private void LoadScene(string levelName)
     {
         SceneManager.LoadScene(levelName);
@@ -177,8 +195,8 @@ public class GameManager : MonoBehaviour
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(menuButtonClickSound);
         //load level
-        //LoadScene("Level1");
-        LoadScene(1);
+        LoadScene("Level1");
+        //LoadScene(1);
         mainMenuCanvas.gameObject.SetActive(false);
         gameCanvas.gameObject.SetActive(true);
         mainMenuSoundSource.SetActive(false);
@@ -209,5 +227,13 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void addScore(int points)
+    {
+        if (!playerDead())
+        {
+            gameScore += points;
+        }
     }
 }
