@@ -7,7 +7,7 @@ public class BulletCollide : MonoBehaviour
     public GameObject explosion = null;
     //private GameObject _explosion = null;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnDestroy()
     {
         Instantiate(explosion, this.transform.position, Quaternion.Euler(Vector3.zero));
     }

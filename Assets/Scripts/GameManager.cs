@@ -96,6 +96,15 @@ public class GameManager : MonoBehaviour
             updatePowerAndHealthBars();
         }
 
+        if (player == null)
+        {
+            Player play = FindObjectOfType<Player>();
+            if (play != null)
+            {
+                player = play.gameObject;
+            }
+        }
+
         if (playerDead())
         {
             deadTimer -= Time.deltaTime;
