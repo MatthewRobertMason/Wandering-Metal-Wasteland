@@ -22,6 +22,14 @@ public class EnemyAi : MonoBehaviour
     public float maxHP;
     public float detectionDistance = 10.0f;
 
+    public float spitDelay = 3.0f;
+    public float spitTimer = 0.0f;
+    public float spitDistance = 5.0f;
+    public float spitSpeed = 2.0f;
+    public float spitLiftime = 3.0f;
+    public GameObject spit = null;
+    public GameObject spitSpawnLocation = null;
+
     public float spawnInvincibleTime = 1.0f;
 
     private Rigidbody2D rBody = null;
@@ -116,7 +124,7 @@ public class EnemyAi : MonoBehaviour
                 this.GetComponent<AudioSource>().PlayOneShot(deathSound);
             }
         }
-        rBody.velocity = (-1 * rBody.velocity.normalized) * 50;
+        //rBody.velocity = (-1 * rBody.velocity.normalized) * 50;
     }
 
     void Move()
@@ -132,7 +140,37 @@ public class EnemyAi : MonoBehaviour
 
                     rBody.velocity = forward.normalized * moveSpeed;
                     break;
+
+                case AIType.CHASER_SHOOTER:
+                    spitTimer -= Time.deltaTime;
+                    this.transform.up = forward;
+
+                    if (Vector3.Distance(this.transform.position, target.transform.position) > spitDistance)
+                    {
+                        rBody.velocity = forward.normalized * moveSpeed;
+                    }
+                    else
+                    {
+                        rBody.velocity = Vector2.zero;
+
+                        if (spitTimer <= 0.0f)
+                        {
+                            spitProjectile();
+                            spitTimer = spitDelay;
+                        }
+                    }
+                    break;
             }
         }
+    }
+
+    private void spitProjectile()
+    {
+        GameObject newSpit = Instantiate(spit, spitSpawnLocation.transform.position, Quaternion.Euler(Vector3.zero));
+        newSpit.GetComponent<Rigidbody2D>().velocity = forward.normalized * spitSpeed;
+
+        newSpit.transform.up = forward;
+
+        Destroy(newSpit, spitLiftime);
     }
 }

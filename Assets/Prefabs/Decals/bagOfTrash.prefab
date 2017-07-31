@@ -105,6 +105,15 @@ MonoBehaviour:
   maxHP: 1
   loot:
   - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1954026420555742, guid: 4fa9221b26a4ceb4e98b291891eeeb97, type: 2}
   spawnInvincibleTime: 1
 --- !u!114 &114776063603726632
 MonoBehaviour:
@@ -150,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 5aea990b011cd224c8cf8a1d10ea3e52, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2eecdcc84bb7ba84d978f6dd8f9993dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
