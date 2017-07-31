@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61241586491681790}
   - component: {fileID: 50924963234015164}
   - component: {fileID: 114326440250412028}
+  - component: {fileID: 114776063603726632}
   m_Layer: 0
   m_Name: bagOfTrash
   m_TagString: Untagged
@@ -102,7 +103,21 @@ MonoBehaviour:
   faction: 2
   HP: 1
   maxHP: 1
-  loot: []
+  loot:
+  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  spawnInvincibleTime: 1
+--- !u!114 &114776063603726632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1540465892218140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4446d00a4e5daf646adc10cb77563a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 10
 --- !u!212 &212585436881060992
 SpriteRenderer:
   m_ObjectHideFlags: 1

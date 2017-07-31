@@ -7,11 +7,11 @@ public class OnCollisionPower : MonoBehaviour
 {
     public float powerAmount = 0.0f;
 
-    private GameManager gameManager = null;
+    //private GameManager gameManager = null;
 
     void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
     }
 
     void OnCollisionStay2D(Collision2D collision)

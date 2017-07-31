@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61942340013531976}
   - component: {fileID: 114012636847911200}
   - component: {fileID: 50364932359937740}
+  - component: {fileID: 114335153728912426}
   m_Layer: 0
   m_Name: ShittyYellow
   m_TagString: Untagged
@@ -113,6 +114,19 @@ MonoBehaviour:
   - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
   - {fileID: 1765248920128150, guid: e33233908327f5e419ef12bad7c3c21a, type: 2}
   - {fileID: 1765248920128150, guid: e33233908327f5e419ef12bad7c3c21a, type: 2}
+  spawnInvincibleTime: 1
+--- !u!114 &114335153728912426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361918132799254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4446d00a4e5daf646adc10cb77563a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 100
 --- !u!212 &212883365795754578
 SpriteRenderer:
   m_ObjectHideFlags: 1

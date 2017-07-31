@@ -22,11 +22,11 @@ public class Powerup : MonoBehaviour
     public AudioClip pickupSound = null;
 
     private bool destroy = false;
-    private GameManager gameManager = null;
+    //private GameManager gameManager = null;
 
     void Awake()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()

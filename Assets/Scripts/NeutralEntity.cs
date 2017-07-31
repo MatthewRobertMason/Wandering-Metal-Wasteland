@@ -11,32 +11,53 @@ public class NeutralEntity : MonoBehaviour
 
     public GameObject[] loot = null;
 
-    private GameManager gameManager = null;
+    //private GameManager gameManager = null;
 
+    private bool destroy = false;
+
+    public float spawnInvincibleTime = 1.0f;
 
 	// Use this for initialization
 	void Awake () 
     {
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+    {
+        if (spawnInvincibleTime > 0.0f)
+        {
+            spawnInvincibleTime -= Time.deltaTime;
+        }
+
+        if (destroy)
+        {
+            //if (!this.GetComponent<AudioSource>().isPlaying)
+            //{
+                Destroy(this.gameObject);
+            //}
+        }		
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        CollideDamage collideDamage = collision.gameObject.GetComponent<CollideDamage>();
-        if (collideDamage != null)
-            TakeDamage(collideDamage.damage, collideDamage.faction);
+        if (spawnInvincibleTime <= 0.0f)
+        {
+            CollideDamage collideDamage = collision.gameObject.GetComponent<CollideDamage>();
+            if (collideDamage != null)
+                TakeDamage(collideDamage.damage, collideDamage.faction);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
-        if (collideDamage != null)
-            TakeDamage(collideDamage.damage, collideDamage.faction);
+        if (spawnInvincibleTime <= 0.0f)
+        {
+            CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
+            if (collideDamage != null)
+                TakeDamage(collideDamage.damage, collideDamage.faction);
+        }
     }
 
     void TakeDamage(float collisionDamage, Faction collisionFaction)
@@ -47,7 +68,10 @@ public class NeutralEntity : MonoBehaviour
         {
             // Explode
             DropLoot();
-            Destroy(this.gameObject);
+            destroy = true;
+            Destroy(this.GetComponent<Collider>());
+            Destroy(this.GetComponent<SpriteRenderer>());
+            Destroy(this.GetComponent<Rigidbody2D>());
         }
     }
 

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61483832997933488}
   - component: {fileID: 114642600821919546}
   - component: {fileID: 50292191645824020}
+  - component: {fileID: 114646397896744360}
   m_Layer: 0
   m_Name: ShittyPurple
   m_TagString: Untagged
@@ -108,11 +109,24 @@ MonoBehaviour:
   - {fileID: 1679409434865934, guid: 9cee9b6e5b09c554aaa5d907b70df875, type: 2}
   - {fileID: 1050630164695738, guid: 97b138963bba2de4cb3596c5e5a5218e, type: 2}
   - {fileID: 1498576050053662, guid: b8800a90b92112048a3bedf1dcd08f98, type: 2}
-  - {fileID: 1498576050053662, guid: b8800a90b92112048a3bedf1dcd08f98, type: 2}
+  - {fileID: 1954026420555742, guid: 4fa9221b26a4ceb4e98b291891eeeb97, type: 2}
   - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
-  - {fileID: 1401116301934684, guid: c65aa4540d7adbe468e4404862a77017, type: 2}
+  - {fileID: 1044595412529052, guid: 1e12159f9adbe7c49a24782c7b10a375, type: 2}
   - {fileID: 1540465892218140, guid: ef07f51e605b58a49b7e68aa270fd963, type: 2}
   - {fileID: 1765248920128150, guid: e33233908327f5e419ef12bad7c3c21a, type: 2}
+  spawnInvincibleTime: 1
+--- !u!114 &114646397896744360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941194681559252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4446d00a4e5daf646adc10cb77563a70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 100
 --- !u!212 &212669980571956964
 SpriteRenderer:
   m_ObjectHideFlags: 1

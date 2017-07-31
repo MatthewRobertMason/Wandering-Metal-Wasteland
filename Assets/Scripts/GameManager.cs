@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject renderingCamera = null;
     public Text scoreText = null;
     public Text zombiesText = null;
+    public Text highScoreText = null;
     public Image healthFill = null;
     public Image powerFill = null;
 
@@ -53,10 +54,17 @@ public class GameManager : MonoBehaviour
     public float nextLevelTimerMax = 3.0f;
     private bool changingLevel = false;
 
+    private int highScore = 0;
+
     void Awake()
     {
         if (instance == null)
         {
+            if (PlayerPrefs.HasKey("HighScore"))
+            {
+                highScore = PlayerPrefs.GetInt("HighScore");
+            }
+
             instance = this;
             DontDestroyOnLoad(this.gameObject);
 
@@ -129,6 +137,9 @@ public class GameManager : MonoBehaviour
         string tempZombieCount = String.Format("{0,3:000}", CountZombies());
         zombiesText.text = "Zombies: " + tempZombieCount;
 
+        string tempHighScore = String.Format("{0,8:00000000}", highScore);
+        highScoreText.text = "High Score: " + tempHighScore;
+
         if (aSource.isPlaying == false)
         {
             if (audioClips.Length > 0)
@@ -159,6 +170,14 @@ public class GameManager : MonoBehaviour
 
             if (deadTimer <= 0.0f)
             {
+                if (gameScore > highScore)
+                {
+                    highScore = gameScore;
+                    PlayerPrefs.SetInt("HighScore", highScore);
+                }
+
+                gameScore = 0;
+
                 deadTimer = 3.0f;
                 gameCanvas.gameObject.SetActive(false);
                 mainMenuCanvas.gameObject.SetActive(true);

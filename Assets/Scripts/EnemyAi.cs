@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyAi : MonoBehaviour 
 {
     public enum AIType
@@ -23,9 +22,15 @@ public class EnemyAi : MonoBehaviour
     public float maxHP;
     public float detectionDistance = 10.0f;
 
+    public float spawnInvincibleTime = 1.0f;
+
     private Rigidbody2D rBody = null;
 
     private Vector2 forward;
+
+    public AudioClip deathSound = null;
+
+    private bool destroy = false;
 
     void Awake()
     {
@@ -44,32 +49,53 @@ public class EnemyAi : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if (target == null)
+        if (destroy)
         {
-            target = FindObjectOfType<Player>().gameObject;
-        }
-
-        if (target != null)
-        {
-            if (Vector3.Distance(this.transform.position, target.transform.position) < detectionDistance)
+            if (!this.GetComponent<AudioSource>().isPlaying)
             {
-                Move();
+                Destroy(this.gameObject);
+            }
+        }
+        else
+        {
+            if (spawnInvincibleTime > 0.0f)
+            {
+                spawnInvincibleTime -= Time.deltaTime;
+            }
+
+            if (target == null)
+            {
+                target = FindObjectOfType<Player>().gameObject;
+            }
+
+            if (target != null)
+            {
+                if (Vector3.Distance(this.transform.position, target.transform.position) < detectionDistance)
+                {
+                    Move();
+                }
             }
         }
 	}
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        CollideDamage collideDamage = collision.gameObject.GetComponent<CollideDamage>();
-        if (collideDamage != null)
-            TakeDamage(collideDamage.damage, collideDamage.faction);
+        if (spawnInvincibleTime <= 0.0f)
+        {
+            CollideDamage collideDamage = collision.gameObject.GetComponent<CollideDamage>();
+            if (collideDamage != null)
+                TakeDamage(collideDamage.damage, collideDamage.faction);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
-        if (collideDamage != null)
-            TakeDamage(collideDamage.damage, collideDamage.faction);
+        if (spawnInvincibleTime <= 0.0f)
+        {
+            CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
+            if (collideDamage != null)
+                TakeDamage(collideDamage.damage, collideDamage.faction);
+        }
     }
 
     void TakeDamage(float collisionDamage, Faction collisionFaction)
@@ -81,7 +107,13 @@ public class EnemyAi : MonoBehaviour
             if (HP <= 0.0f)
             {
                 // Explode
-                Destroy(this.gameObject);
+                destroy = true;
+                Destroy(this.GetComponent<Rigidbody2D>());
+                Destroy(this.GetComponent<CapsuleCollider2D>());
+                Destroy(this.GetComponent<CollideDamage>());
+                Destroy(this.GetComponentInChildren<SpriteRenderer>());
+
+                this.GetComponent<AudioSource>().PlayOneShot(deathSound);
             }
         }
         rBody.velocity = (-1 * rBody.velocity.normalized) * 50;
