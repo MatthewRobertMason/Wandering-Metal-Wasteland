@@ -486,6 +486,12 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -324
       objectReference: {fileID: 0}
+    - target: {fileID: 114929062794192280, guid: 421d8d0ee81017c41ab5a0cc600f9cb3,
+        type: 2}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1099210920182524, guid: 80ae942fe54257947a7b6b1017f5c81b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 421d8d0ee81017c41ab5a0cc600f9cb3, type: 2}
   m_IsPrefabParent: 0
@@ -514,7 +520,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 41d595feddbd606429f32c4e6e9a193b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 79a818fdc56ccd64da7aa740fd5862ee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

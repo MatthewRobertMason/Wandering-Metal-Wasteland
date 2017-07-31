@@ -9,11 +9,12 @@ public class AutomatedBuild : MonoBehaviour
     public static void BuildWebGL()
     {
         BuildPlayerOptions options;
-        //options.scenes = new string[] { "Assets/Scene1.unity" };
         options.scenes = new string[] { 
             "Assets/MainMenu.unity",
-            "Assets/Level1.unity", 
-            "Assets/Level2.unity"
+            "Assets/level1.unity", 
+            "Assets/level2.unity",
+            "Assets/level3.unity",
+            "Assets/level4.unity"
         };
 
         options.targetGroup = BuildTargetGroup.WebGL;

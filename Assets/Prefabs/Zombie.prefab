@@ -167,7 +167,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -191,7 +191,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95817539752314438
 Animator:
   serializedVersion: 3
@@ -247,7 +247,7 @@ MonoBehaviour:
   EnemyAIType: 0
   faction: 1
   target: {fileID: 0}
-  moveSpeed: 0.5
+  moveSpeed: 1
   HP: 3
   maxHP: 3
   detectionDistance: 10

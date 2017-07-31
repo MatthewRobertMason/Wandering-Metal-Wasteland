@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099210920182524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.020539999, y: -3.4670277, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4511985881274058}
@@ -472,7 +472,7 @@ MonoBehaviour:
   faction: 0
   bulletSpawn: {fileID: 4511985881274058}
   turnSpeed: 1.5
-  moveSpeed: 1.5
+  moveSpeed: 2
   prefabBullet: {fileID: 1866341932817430, guid: fc7bf06fba5a70f4b835fcd93c7c44f4,
     type: 2}
   maxBullets: 5

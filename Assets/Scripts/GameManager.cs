@@ -16,6 +16,8 @@ public enum Faction
 public class GameManager : MonoBehaviour 
 {
     private static GameManager instance = null;
+
+    public GameObject playerPrefab = null;
     public GameObject player = null;
 
     private AudioSource aSource = null;
@@ -273,7 +275,7 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         soundSource.GetComponent<AudioSource>().PlayOneShot(menuButtonClickSound);
-
+        player = Instantiate(playerPrefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.Euler(Vector3.zero));
         LoadScene("Level1");
         //LoadScene(1);
         mainMenuCanvas.gameObject.SetActive(false);

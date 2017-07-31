@@ -21,7 +21,6 @@ public class OnTriggerLevelChange : MonoBehaviour
         {
             //gameManager.playTitle();
             gameManager.NextLevel(sceneName);
-            Destroy(this.gameObject);
         }
     }
 }
