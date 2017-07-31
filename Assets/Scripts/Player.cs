@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(AudioSource))]
@@ -86,6 +87,11 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Destroy(this.gameObject);
+        }
+
         if (dead)
         {
             animationState = AnimationState.STILL;

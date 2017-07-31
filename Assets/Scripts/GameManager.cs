@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
-            
+
             aSource = this.GetComponent<AudioSource>();
 
             if (audioClips.Length > 0)
@@ -72,7 +72,12 @@ public class GameManager : MonoBehaviour
             }
         }
         else
-            Destroy(this.gameObject);
+        {
+            if (instance != this)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
 	// Use this for initialization
