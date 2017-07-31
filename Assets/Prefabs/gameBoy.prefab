@@ -124,7 +124,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -148,7 +148,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &114246419355484976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -174,10 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerChange: 0
   healthChange: 0
-  moveSpeedIncrease: 0.5
-  turnSpeedIncrease: 0.5
-  bulletSpeedIncrease: 0.5
-  damageIncerease: 0.5
+  moveSpeedIncrease: 0.25
+  turnSpeedIncrease: 0.25
+  bulletSpeedIncrease: 0.25
+  damageIncerease: 0.25
   maximumLifeIncrease: 0
   maximumPowerIncrease: 0
   pickupSound: {fileID: 8300000, guid: 143df1f0bc7eb5a449b6634fc3c027fd, type: 3}
@@ -212,7 +212,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: de2d7c64e715e304598cf3e1d2a96ec4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

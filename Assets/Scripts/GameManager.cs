@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public GameObject soundSource = null;
     public AudioClip passwordSound = null;
     public AudioClip menuButtonClickSound = null;
+    public AudioClip zoneSlayerAudio = null;
 
     public Canvas gameCanvas = null;
     public Canvas mainMenuCanvas = null;
@@ -240,5 +241,10 @@ public class GameManager : MonoBehaviour
         {
             gameScore += points;
         }
+    }
+
+    public void playTitle()
+    {
+        soundSource.GetComponent<AudioSource>().PlayOneShot(zoneSlayerAudio);
     }
 }
