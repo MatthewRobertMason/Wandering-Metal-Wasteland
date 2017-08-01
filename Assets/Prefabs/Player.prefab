@@ -478,7 +478,7 @@ MonoBehaviour:
   maxBullets: 5
   bulletSpeed: 3
   bulletSound: {fileID: 8300000, guid: 73dbb3252e5f5ff4981f8077d9a2add0, type: 3}
-  meleeSound: {fileID: 8300000, guid: 3c6e35d19b39f9a4d8e358ceed624619, type: 3}
+  meleeSound: {fileID: 8300000, guid: ea322cd8610ddb54c920f4c652f3d112, type: 3}
   playerDead: {fileID: 8300000, guid: 1485793f2f2df134a80b711cc959b469, type: 3}
   playerPowerDown: {fileID: 8300000, guid: 3389e5adc3aaed84db8e9a63cca0805f, type: 3}
   HP: 10
