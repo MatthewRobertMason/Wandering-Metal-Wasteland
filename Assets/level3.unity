@@ -486,7 +486,7 @@ Transform:
   - {fileID: 1981388620}
   - {fileID: 1486367698}
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &250236887
 Prefab:
@@ -4943,6 +4943,26 @@ Prefab:
     - target: {fileID: 1145921168443762, guid: e73ae080128645146bcafac5427290f0, type: 2}
       propertyPath: m_Name
       value: 3WayStopDown (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212864992059782010, guid: e73ae080128645146bcafac5427290f0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212850048320507888, guid: e73ae080128645146bcafac5427290f0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212642393719815490, guid: e73ae080128645146bcafac5427290f0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212558044418677814, guid: e73ae080128645146bcafac5427290f0,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e73ae080128645146bcafac5427290f0, type: 2}
