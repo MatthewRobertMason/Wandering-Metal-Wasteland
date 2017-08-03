@@ -97,15 +97,6 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if (PP <= 1.0f)
-        {
-            PP = maxPP;
-        }
-        if (HP <= 3.0f)
-        {
-            HP = maxHP;
-        }
-
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             Destroy(this.gameObject);
