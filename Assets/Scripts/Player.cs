@@ -62,6 +62,9 @@ public class Player : MonoBehaviour
 
     public float damageBonus = 0.0f;
 
+    public float invincibleDelay = 0.5f;
+    private float invincibleTimer = 0.0f;
+
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -84,11 +87,25 @@ public class Player : MonoBehaviour
         rBody = this.GetComponent<Rigidbody2D>();
         aSource = this.GetComponent<AudioSource>();
         bullets = new Queue<GameObject>();
+
+        if (gameManager.wussMode)
+        {
+            powerUsagePerSecond = powerUsagePerSecond * 1.5f;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
+        if (PP <= 1.0f)
+        {
+            PP = maxPP;
+        }
+        if (HP <= 3.0f)
+        {
+            HP = maxHP;
+        }
+
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             Destroy(this.gameObject);
@@ -124,8 +141,20 @@ public class Player : MonoBehaviour
             GetControls();
         }
 
+        if (invincibleTimer > 0.0f)
+        {
+            invincibleTimer -= Time.deltaTime;
+        }
+
         losePower();
 	}
+
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        CollideDamage collideDamage = collision.gameObject.GetComponent<CollideDamage>();
+        if (collideDamage != null)
+            TakeDamage(collideDamage.damage, collideDamage.faction);
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -133,7 +162,14 @@ public class Player : MonoBehaviour
         if (collideDamage != null)
             TakeDamage(collideDamage.damage, collideDamage.faction);
     }
-    
+
+    void OnTriggerStay2D(Collider2D collider)
+    {
+        CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
+        if (collideDamage != null)
+            TakeDamage(collideDamage.damage, collideDamage.faction);
+    }
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         CollideDamage collideDamage = collider.gameObject.GetComponent<CollideDamage>();
@@ -143,7 +179,7 @@ public class Player : MonoBehaviour
 
     void TakeDamage(float collisionDamage, Faction collisionFaction)
     {
-        if (collisionFaction != faction)
+        if ((collisionFaction != faction) && (invincibleTimer <= 0.0f))
         {
             HP -= collisionDamage;
 
@@ -157,6 +193,10 @@ public class Player : MonoBehaviour
                 Destroy(walkAnimation);
                 Destroy(stillAnimation);
             }
+            else
+            {
+                invincibleTimer = invincibleDelay;
+            }
         }
     }
 
@@ -167,18 +207,27 @@ public class Player : MonoBehaviour
 
         forward = this.transform.up;
 
-        if (turnVelocity == 0.0f)
+        if (!gameManager.wussMode)
         {
-            rBody.velocity = forward.normalized * velocity * moveSpeed;
+            // BE A MAN!
+            if (turnVelocity == 0.0f)
+            {
+                rBody.velocity = forward.normalized * velocity * moveSpeed;
+            }
+            else
+            {
+                rBody.velocity = Vector2.zero;
+            }
+
+            if (rBody.velocity == Vector2.zero)
+            {
+                this.transform.Rotate(Vector3.forward, turnVelocity * turnSpeed);
+            }
         }
         else
         {
-            rBody.velocity = Vector2.zero;
-        }
-
-        if (rBody.velocity == Vector2.zero)
-        {
-            //this.transform.Rotate(0.0f, 0.0f, turnVelocity * turnSpeed);
+            // I'm a little bitch
+            rBody.velocity = forward.normalized * velocity * moveSpeed;
             this.transform.Rotate(Vector3.forward, turnVelocity * turnSpeed);
         }
 

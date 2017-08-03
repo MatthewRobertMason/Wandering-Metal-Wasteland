@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour
 
     private int highScore = 0;
 
+    public bool wussMode = false;
+    public GameObject wussModeActivate = null;
+    public GameObject wussModeDeActivate = null;
+
+    public int zonesSlain = 0;
+
     void Awake()
     {
         if (instance == null)
@@ -296,6 +302,22 @@ public class GameManager : MonoBehaviour
         credits.gameObject.SetActive(!credits.gameObject.activeInHierarchy);
     }
 
+    public void WussMode()
+    {
+        wussMode = !wussMode;
+
+        if (wussMode)
+        {
+            wussModeActivate.SetActive(true);
+            wussModeDeActivate.SetActive(false);
+        }
+        else
+        {
+            wussModeActivate.SetActive(false);
+            wussModeDeActivate.SetActive(true);
+        }
+    }
+
     private bool playerDead()
     {
         if (player != null)
@@ -315,7 +337,7 @@ public class GameManager : MonoBehaviour
     {
         if (!playerDead())
         {
-            gameScore += points;
+            gameScore += (int)((float)points * (zonesSlain * 0.1f));
         }
     }
 
@@ -333,3 +355,4 @@ public class GameManager : MonoBehaviour
         return 0;
     }
 }
+

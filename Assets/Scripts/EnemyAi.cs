@@ -40,6 +40,8 @@ public class EnemyAi : MonoBehaviour
 
     private bool destroy = false;
 
+    private int zonesSlainModifier = 0;
+
     void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -52,6 +54,19 @@ public class EnemyAi : MonoBehaviour
 
         rBody = this.GetComponent<Rigidbody2D>();
         forward = Vector2.up;
+        zonesSlainModifier = gameManager.zonesSlain;
+
+        moveSpeed = moveSpeed + (zonesSlainModifier * 0.25f);
+        moveSpeed = Mathf.Min(moveSpeed, 8.0f);
+        HP = HP + (zonesSlainModifier / 2);
+        maxHP = HP;
+        detectionDistance = detectionDistance + zonesSlainModifier;
+
+        spitDelay = spitDelay - (zonesSlainModifier * 0.25f);
+        spitDelay = Mathf.Max(spitDelay, 1.0f);
+
+        spitDistance = spitDistance + (zonesSlainModifier + 0.25f);
+        spitSpeed = spitSpeed + (zonesSlainModifier + 0.1f);
 	}
 	
 	// Update is called once per frame
@@ -125,6 +140,7 @@ public class EnemyAi : MonoBehaviour
             }
         }
         //rBody.velocity = (-1 * rBody.velocity.normalized) * 50;
+        //this.transform.Translate(forward.normalized * -0.5f);
     }
 
     void Move()

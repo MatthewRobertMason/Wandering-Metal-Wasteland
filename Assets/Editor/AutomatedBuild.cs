@@ -8,7 +8,7 @@ public class AutomatedBuild : MonoBehaviour
 {
     public static void BuildWebGL()
     {
-        BuildPlayerOptions options;
+        BuildPlayerOptions options = new BuildPlayerOptions();
         options.scenes = new string[] { 
             "Assets/MainMenu.unity",
             "Assets/level1.unity", 
@@ -19,7 +19,7 @@ public class AutomatedBuild : MonoBehaviour
 
         options.targetGroup = BuildTargetGroup.WebGL;
         options.target = BuildTarget.WebGL;
-        options.locationPathName = "Build/WebGL";
+        options.locationPathName = "Build/WebGL_PostJam";
 
         BuildPipeline.BuildPlayer(options);
     }

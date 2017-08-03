@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099210920182524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.614, y: -3.0293777, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4511985881274058}
@@ -242,7 +242,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -263,8 +263,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: -0.5}
-  m_Size: {x: 1.4, y: 0.6}
+  m_Offset: {x: 0.2, y: -0.4}
+  m_Size: {x: 1.6, y: 1}
   m_Direction: 1
 --- !u!81 &81290007660528106
 AudioListener:
@@ -396,7 +396,7 @@ Animator:
   m_GameObject: {fileID: 1099210920182524}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 205d65bf4d5dd19449230d1f463b010b, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -471,8 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faction: 0
   bulletSpawn: {fileID: 4511985881274058}
-  turnSpeed: 1.5
-  moveSpeed: 2
+  turnSpeed: 2.5
+  moveSpeed: 3
   prefabBullet: {fileID: 1866341932817430, guid: fc7bf06fba5a70f4b835fcd93c7c44f4,
     type: 2}
   maxBullets: 5
@@ -496,6 +496,7 @@ MonoBehaviour:
   chainsawDuration: 0.75
   gunPowerUsage: 0.75
   damageBonus: 0
+  invincibleDelay: 0.5
 --- !u!114 &114970601617157596
 MonoBehaviour:
   m_ObjectHideFlags: 1
